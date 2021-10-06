@@ -11,10 +11,89 @@ namespace ConsoleProgramlama
         static void Main(string[] args)
         {
             //DiziVeSayilar();
-            //ornek2();
+            //Ornek2();
             //Harfler();
-            //stringörnek();
+            //StringOrnek();
 
+            List<int> sayilar = new List<int>();
+            sayilar.Add(3);
+            sayilar.Add(3);
+            sayilar.Add(4);
+            sayilar.Add(8);
+
+            List<string> renkler = new List<string>();
+            renkler.Add("sarı");
+            renkler.Add("kırmızı");
+            renkler.Add("mavi");
+            renkler.Add("mor");
+            renkler.Add("turuncu");
+
+            Console.WriteLine(renkler.Count);
+            Console.WriteLine(sayilar.Count);
+
+            foreach (var item in renkler)  // değişik yönde kullanımı elemanları sıralar
+            {
+                Console.WriteLine(item);
+            }
+
+            foreach (var item in sayilar)
+            {
+                Console.WriteLine(item);
+            }
+
+            sayilar.Remove(4); // var olan değeri sil 
+            renkler.Remove("mor");
+            sayilar.RemoveAt(1); // var olan indexteki değeri sil
+            renkler.RemoveAt(2);
+
+            sayilar.ForEach(sayi => Console.WriteLine(sayi)); // değişik yönde kullanımı elemanları sıralar
+            renkler.ForEach(renk => Console.WriteLine(renk));
+
+            if (sayilar.Contains(3)) // contains içinde yazılandaki elemanı dizide arar.
+            {
+                Console.WriteLine("sayı var");
+            }
+
+            Console.WriteLine(renkler.BinarySearch("turuncu")); // turuncunun indexini verir.
+
+            string[] hayvanlar = { "kedi", "köpek", "aslan", "fare", "yılan", "kuş" };
+
+            List<string> hayvanlarlistesi = new List<string>(hayvanlar); // hayvanlar dizisini hayvanlar listesine çevirir.
+
+            hayvanlarlistesi.Clear(); // tüm listeyi temizler.
+
+            List<Kullanıcılar> kullanıcılars = new List<Kullanıcılar>(); // kullanıcılar listesinden nesne oluşturarak kullanıcıları ekledik.
+            Kullanıcılar kullanıcılar1 = new Kullanıcılar();
+            kullanıcılar1.Isim = "asda";
+            kullanıcılar1.Soyisim = "ksdamd";
+            kullanıcılar1.Yas = 33;
+
+            Kullanıcılar kullanıcılar2 = new Kullanıcılar();
+            kullanıcılar2.Isim = "aa";
+            kullanıcılar2.Soyisim = "bb";
+            kullanıcılar2.Yas = 22;
+
+            kullanıcılars.Add(kullanıcılar1);
+            kullanıcılars.Add(kullanıcılar2);
+
+            List<Kullanıcılar> yeniliste = new List<Kullanıcılar>(); // farklı ve pratik şekilde kullanıcı ekleme
+            yeniliste.Add(new Kullanıcılar()
+            {
+                Isim = "dee",
+                Soyisim="dad",
+                Yas=33
+            });
+
+            foreach (var item in kullanıcılars)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            Console.ReadLine();
+        }
+        private static void Nots()
+        {
             //Length // string dizi uzunluğu verir.
             //ToUpper , hepsini büyük yapar. // ToLower , hepsini küçük yapar.
             //Concat(değişken,"merhaba") , değişkeni yanındaki string ile birleştirir.
@@ -32,10 +111,28 @@ namespace ConsoleProgramlama
             //değişken.Split(' '[1]) , boşluklara göre bunları parçala ve 1. indexteki değeri göster.
             //değişken.SubString(4) , 4. indexten başlayarak cümlenin sonuna kadar getirir.
             //değişken.SubString(4,6) , 4. indexten başlayarak 6 karakter getirir.
+            //değişken.ToString , ifadeyi string olarak getirir.
+            //DateTime.Now.DayOfWeek , günü string olarak verir.
+            //Date.Time.Now.DayOfYear , yılın kaçıncı gününde olduğumuzu verir.
+            //Date.Time.Now.ToLongDateString() , günü string yazarak tüm formatı string verir. SATURDAY APTİL 2 2021
+            //Date.Time.Now.ToShortDateString() , 4/24/2021 şeklinde verir.
+            //Date.Time.Now.ToString("dd") , //24 getirir, "ddd" sat getirir. "dddd" saturday getirir.
+            //Date.Time.Now.ToString("mm") , //24 getirir, "mmm" sat getirir. "mmmm" saturday getirir.
+            //Date.Time.Now.ToString("yy") , //21 getirir, "yyyy" 2021 getirir.
+            //Math.Abs(-25) , 25 olarak pozitif getirir.
+            //Math.Celling(22,3) üste yuvarlar tam sayı 23 olur .
+            //Math.Round(22,3) 22 olur  22,7 olsa 23 verir.
+            //Math.Floor(22,7) 22 verir.
+            //Math.Max(2,6) büyük olan sayıyı verir.
+            //Math.Min(2,6) küçük olan sayıyı verir.
+            //Math.Pow(3,4) 3^4 verir = 81
+            //Math.Sqrt(9) karekök alır. =3
+            //Math.Log(9) 9 un e tanındaki logaritmik karşılığıdır.
+            //Math.Exp(3) e üzeri 3 ü verir.
+            //Math.Log10(10) 10 un logaritma 10 tabanındaki karşılığıdır.
 
-            Console.ReadLine();
         }
-        private static void stringörnek()
+        private static void StringOrnek()
         {
             Console.WriteLine("cümle yazınız.");
             string cümle = Console.ReadLine();
@@ -66,7 +163,7 @@ namespace ConsoleProgramlama
                 Console.WriteLine(item);
             }
         }
-        private static void ornek2()
+        private static void Ornek2()
         {
             int sayi1;
             Console.WriteLine("1 pozitif sayı girin");
@@ -106,5 +203,15 @@ namespace ConsoleProgramlama
                     Console.WriteLine(item);
             }
         }
+    }
+    public class Kullanıcılar
+    {
+        private string isim;
+        private string soyisim;
+        private int yas;
+
+        public string Isim { get => isim; set => isim = value; }
+        public string Soyisim { get => soyisim; set => soyisim = value; }
+        public int Yas { get => yas; set => yas = value; }
     }
 }
