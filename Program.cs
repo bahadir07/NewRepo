@@ -36,7 +36,7 @@ namespace ConsoleProgramlama
                 list1.Clear();
                 for (int i = 0; i < list.Count; i+=2)
                 {
-                    if (i + 1 == list.Count && list[i] != 0)
+                    if (i + 1 == list.Count)
                     {
                         list1.Insert(0,list[i]);
                         break;
