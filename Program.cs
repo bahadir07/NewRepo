@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,97 @@ namespace ConsoleProgramlama
             //Ornek2();
             //Harfler();
             //StringOrnek();
+            //List();
+            //AsalMiDegilMi();
+            kralkim();
+            Console.ReadLine();
+        }
+        private static void kralkim()
+        {
+            //Girilen sayıya göre bir çemberde her kişi yanındakini öldürürse hangisi sona kalır. Her defasında bir yanındakini öldürüp sırayı ölenin yanındakine geçmesi mantığını kapsar.
+            Console.WriteLine("1 tane pozitif sayı girin");
+            int sayi = Convert.ToInt32(Console.ReadLine());
+            List<int> list = new List<int>();
+            List<int> list1 = new List<int>();
 
+            for (int i = 0; i < sayi; i++)
+                list.Add(i + 1);
+
+            while (list1.Count != 1)
+            {
+                list1.Clear();
+                for (int i = 0; i < list.Count; i+=2)
+                {
+                    if (i + 1 == list.Count && list[i] != 0)
+                    {
+                        list1.Insert(0,list[i]);
+                        break;
+                    }
+                    list1.Add(list[i]);
+                }
+                list.Clear();
+                foreach (var item in list1)
+                {
+                    list.Add(item);
+                }
+            }
+
+            Console.WriteLine("kral = {0}", list[0]);
+        }
+        private static void AsalMiDegilMi()
+        {
+            int sayi;
+            int sayac = 0;
+            ArrayList asal = new ArrayList();
+            ArrayList unasal = new ArrayList();
+            Console.WriteLine("5 tane pozitif sayı girin");
+            for (int i = 0; i < 5; i++)
+            {
+                try
+                {
+                    sayi = Convert.ToInt32(Console.ReadLine());
+
+                    for (int j = 2; j < sayi; j++)
+                    {
+                        if (sayi % j == 0)
+                        {
+                            sayac++;
+                        }
+                    }
+                    if (sayac == 0)
+                    {
+                        asal.Add(sayi);
+                    }
+                    else
+                    {
+                        unasal.Add(sayi);
+                    }
+                    sayac = 0;
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                    i--;
+                }
+            }
+            asal.Sort();
+            asal.Reverse();
+            unasal.Sort();
+            unasal.Reverse();
+            Console.WriteLine("asal olan sayılar");
+            foreach (var item in asal)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("asal olmayan sayılar");
+            foreach (var item in unasal)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        private static void List()
+        {
             List<int> sayilar = new List<int>();
             sayilar.Add(3);
             sayilar.Add(3);
@@ -80,17 +171,14 @@ namespace ConsoleProgramlama
             yeniliste.Add(new Kullanıcılar()
             {
                 Isim = "dee",
-                Soyisim="dad",
-                Yas=33
+                Soyisim = "dad",
+                Yas = 33
             });
 
             foreach (var item in kullanıcılars)
             {
                 Console.WriteLine(item);
             }
-
-
-            Console.ReadLine();
         }
         private static void Nots()
         {
