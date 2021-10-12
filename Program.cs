@@ -21,18 +21,24 @@ namespace ConsoleProgramlama
             örnek3();
             Console.ReadLine();
         }
-
         private static void örnek3()
         {
             ArrayList sayi = new ArrayList();
             ArrayList list = new ArrayList();
 
             double ortalama;
-
             Console.WriteLine("20 tane sayı girin");
             for (int i = 0; i < 8; i++)
             {
-                sayi.Add(Convert.ToInt32(Console.ReadLine()));
+                try
+                {
+                    sayi.Add(Convert.ToInt32(Console.ReadLine()));
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                    i--;
+                }
             }
             sayi.Sort();
             for (int i = 0; i < 3; i++)
@@ -58,7 +64,6 @@ namespace ConsoleProgramlama
                 Console.WriteLine(item);
             }
         }
-
         private static void kralkim()
         {
             //Girilen sayıya göre bir çemberde her kişi yanındakini öldürürse hangisi sona kalır. Her defasında bir yanındakini öldürüp sırayı ölenin yanındakine geçmesi mantığını kapsar.
