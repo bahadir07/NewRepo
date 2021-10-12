@@ -17,9 +17,48 @@ namespace ConsoleProgramlama
             //StringOrnek();
             //List();
             //AsalMiDegilMi();
-            kralkim();
+            //kralkim();
+            örnek3();
             Console.ReadLine();
         }
+
+        private static void örnek3()
+        {
+            ArrayList sayi = new ArrayList();
+            ArrayList list = new ArrayList();
+
+            double ortalama;
+
+            Console.WriteLine("20 tane sayı girin");
+            for (int i = 0; i < 8; i++)
+            {
+                sayi.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+            sayi.Sort();
+            for (int i = 0; i < 3; i++)
+            {
+                list.Add(sayi[sayi.Count - 1]);
+                sayi.RemoveAt(sayi.Count - 1);
+                list.Add(sayi[i]);
+            }
+            list.Sort();
+            int[] array = new int[list.Count];
+            list.CopyTo(array);
+
+            int kort = (array[0] + array[1] + array[2]) / 3;
+
+            int bort = (array[3] + array[4] + array[5]) / 3;
+
+            Console.WriteLine(kort);
+
+            Console.WriteLine(bort);
+
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
         private static void kralkim()
         {
             //Girilen sayıya göre bir çemberde her kişi yanındakini öldürürse hangisi sona kalır. Her defasında bir yanındakini öldürüp sırayı ölenin yanındakine geçmesi mantığını kapsar.
@@ -34,11 +73,11 @@ namespace ConsoleProgramlama
             while (list1.Count != 1)
             {
                 list1.Clear();
-                for (int i = 0; i < list.Count; i+=2)
+                for (int i = 0; i < list.Count; i += 2)
                 {
                     if (i + 1 == list.Count)
                     {
-                        list1.Insert(0,list[i]);
+                        list1.Insert(0, list[i]);
                         break;
                     }
                     list1.Add(list[i]);
